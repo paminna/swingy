@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static view.CreateHero.current_hero;
-import static view.GUI.WindowService.paintCreationHero;
 
 /**
  * @author RMNurgalieva
@@ -33,12 +32,7 @@ public class Action implements ActionListener {
                     heroList.get(current_hero).getRightSide(), heroList.get(current_hero).getBack(),
                     0, 0);
             windowService.clearWindow();
-            CreateHeroGUI.crateHero();
-            try {
-                paintCreationHero();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            CreateHeroGUI.createWindowHero();
         } else if (action.equals("load hero")){
             System.out.println("hero selected");
         } else if (action.equals("exit")){

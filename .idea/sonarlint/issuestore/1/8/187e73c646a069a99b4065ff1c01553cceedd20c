@@ -1,0 +1,56 @@
+
+d
+java:S1192""NDefine a constant instead of duplicating this literal "\033[H\033[2J" 4 times.(Îœò—
+s	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ØÄƒ
+V
+java:S1118":Add a private constructor to hide the implicit public one.(ãþÖR8ýÜÆÙµ0
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(îØ­£ùÿÿÿÿ
+[
+java:S18541"ERemove this useless assignment to local variable "coordinates_start".(ÚØ¥¤
+G
+java:S2440"*Remove this instantiation of "CreateHero".(¤„Œ±8ÿÜÆÙµ0
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ùª•áüÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(­ò…üþÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ç’÷@
+N	java:S106"9Replace this use of System.out or System.err by a logger.(†¸ØÇ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(›¡²äúÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(²âå÷ùÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÕŽÇÕûÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(þè¢O
+N	java:S106""9Replace this use of System.out or System.err by a logger.(Îœò—
+N	java:S106#"9Replace this use of System.out or System.err by a logger.(ÚŽÂâ
+N	java:S106)"9Replace this use of System.out or System.err by a logger.(Îœò—
+N	java:S106*"9Replace this use of System.out or System.err by a logger.(ÚŽÂâ
+L
+java:S14810"6Remove this unused "coordinates_start" local variable.(±ØÄƒ
+W
+java:S22092"5Change this instance-reference to a static reference.(ÉÝÖ·øÿÿÿÿ8‡ÝÆÙµ0
+W
+java:S22092"5Change this instance-reference to a static reference.(ÉÝÖ·øÿÿÿÿ8ˆÝÆÙµ0
+W
+java:S22092"5Change this instance-reference to a static reference.(ÉÝÖ·øÿÿÿÿ8ˆÝÆÙµ0
+R
+java:S22093"5Change this instance-reference to a static reference.(É‚«¶8ˆÝÆÙµ0
+R
+java:S22093"5Change this instance-reference to a static reference.(É‚«¶8‰ÝÆÙµ0
+R
+java:S22093"5Change this instance-reference to a static reference.(É‚«¶8‰ÝÆÙµ0
+R
+java:S22093"5Change this instance-reference to a static reference.(É‚«¶8ŠÝÆÙµ0
+W
+java:S22094"5Change this instance-reference to a static reference.(¹±ƒ³ùÿÿÿÿ8ŠÝÆÙµ0
+W
+java:S22094"5Change this instance-reference to a static reference.(¹±ƒ³ùÿÿÿÿ8ŠÝÆÙµ0
+W
+java:S22094"5Change this instance-reference to a static reference.(¹±ƒ³ùÿÿÿÿ8‹ÝÆÙµ0
+W
+java:S22094"5Change this instance-reference to a static reference.(¹±ƒ³ùÿÿÿÿ8‹ÝÆÙµ0
+W
+java:S22094"5Change this instance-reference to a static reference.(¹±ƒ³ùÿÿÿÿ8‹ÝÆÙµ0
+M	java:S1069"9Replace this use of System.out or System.err by a logger.(ÅÕÀ
+N	java:S106<"9Replace this use of System.out or System.err by a logger.(Îœò—
+N	java:S106="9Replace this use of System.out or System.err by a logger.(ÚŽÂâ
+N	java:S106@"9Replace this use of System.out or System.err by a logger.(Îœò—
+N	java:S106A"9Replace this use of System.out or System.err by a logger.(ÚŽÂâ

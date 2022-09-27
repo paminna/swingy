@@ -51,7 +51,7 @@ public class WindowService {
     }
 
     public static JFrame createWelcomeWindow(){
-        createBackGround("/Users/regina/Desktop/swingy/src/main/resources/mainPage.png");
+        createBackGround("./src/main/resources/mainPage.png");
         window.setLayout(null);
         window.setVisible(true);
         createText("Welcome to swingy!", 350, 100);
@@ -84,12 +84,16 @@ public class WindowService {
         window.getContentPane().repaint();
     }
 
-    public void add_empty_text(int gridy, int gridx) {
+    public void addEmptyText(int gridy, int gridx) {
         GridBagConstraints c = new GridBagConstraints();
         c.gridy = gridy;
         c.gridx = gridx;
         c.fill = GridBagConstraints.VERTICAL;
         JLabel text = createText(" ", 16, 100);
         window.add(text, c);
+    }
+
+    public static void startPlay(){
+
     }
 }

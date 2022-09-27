@@ -1,0 +1,25 @@
+
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(â€¨Äùÿÿÿÿ8°à¦Öµ0
+a
+java:S1192"FDefine a constant instead of duplicating this literal "Hero1" 4 times.(î€ı°úÿÿÿÿ
+c
+java:S1192"HDefine a constant instead of duplicating this literal "Warrior" 4 times.(î€ı°úÿÿÿÿ
+ˆ
+java:S1319"fThe type of "heroes" should be an interface such as "List" rather than the implementation "ArrayList".(Âç’Òøÿÿÿÿ8çÕ”Ïµ0
+t
+java:S1104"RMake heroes a static final constant or non-public and provide accessors if needed.(Âç’Òøÿÿÿÿ8ï°¦Öµ0
+z
+java:S1104"XMake current_hero a static final constant or non-public and provide accessors if needed.(­²ÔŸÿÿÿÿÿ8œï”Ïµ0
+N
+java:S1444",Make this "public static heroes" field final(Âç’Òøÿÿÿÿ8ğ°¦Öµ0
+T
+java:S1444"2Make this "public static current_hero" field final(­²ÔŸÿÿÿÿÿ8œï”Ïµ0
+r
+java:S3008"WRename this field "current_hero" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­²ÔŸÿÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(çŸ°
+C
+java:S2386"!Make member "heroes" "protected".(â€¨Äùÿÿÿÿ8ºà¦Öµ0
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8†Ì§Öµ0
