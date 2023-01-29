@@ -1,6 +1,11 @@
 package view;
 
+import controller.PlayController;
+
 import java.sql.*;
+
+import static controller.PlayController.currentHero;
+import static view.console.LoadHeroConsole.loadArtifacts;
 
 public class DBService {
 
@@ -12,7 +17,6 @@ public class DBService {
     public DBService() {
         try {
             this.error = false;
-//            String DB_URL = "jdbc:h2:mem:testb";
             String DB_URL = "jdbc:postgresql://localhost:5432/swingy";
             Class.forName("org.postgresql.Driver"); // Проверяем наличие JDBC драйвера для работы с БД
             connection = DriverManager.getConnection(DB_URL, "regina", "Listenthezebra2!"); // соединениесБД
@@ -30,7 +34,6 @@ public class DBService {
                         "coordinateX INT NOT NULL," +
                         "coordinateY INT NOT NULL," +
                         "photoProfile VARCHAR(100) NOT NULL," +
-                        "face VARCHAR(100) NOT NULL," +
                         "leftSide VARCHAR(100) NOT NULL," +
                         "rightSide VARCHAR(100) NOT NULL," +
                         "back VARCHAR(100) NOT NULL," +
@@ -49,12 +52,20 @@ public class DBService {
         }
     }
 
-    public void executeUpdate(String query) {
+    public void findHeroById(Integer id) {
         try {
-            statement.executeUpdate(query);
+            ResultSet hero = executeQuery("SELECT * from hero where id=" + id);
+            while (hero.next()) {
+                PlayController.createHero(hero.getString("name"), hero.getString("class"), Integer.parseInt(hero.getString("attack"))
+                        , Integer.parseInt(hero.getString("defence")), Integer.parseInt(hero.getString("hitpoints")), hero.getString("photoprofile"),
+                        hero.getString("leftside"), hero.getString("rightside"), hero.getString("back"),
+                        Integer.parseInt(hero.getString("coordinatex")), Integer.parseInt(hero.getString("coordinatey")),
+                        Integer.parseInt(hero.getString("experience")), Integer.parseInt(hero.getString("level")));
+                loadArtifacts(Integer.parseInt(hero.getString("weapon")),
+                        Integer.parseInt(hero.getString("armor")), Integer.parseInt(hero.getString("helmet")));
+            }
         } catch (SQLException e) {
-            System.out.println("Ошибка SQL Update!");
-            this.error = true;
+            System.out.println("Error loadHeroBD");
         }
     }
 
@@ -64,27 +75,36 @@ public class DBService {
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
             this.error = true;
-            System.out.println("Ошибка SQL Query!");
             return null;
         }
         return resultSet;
     }
 
-    public void close_connection() {
-        try {
-            connection.close();       // отключение от БД
-            System.out.println("БД отключена");
-        } catch (SQLException e) {
-            System.out.println("Ошибка отсоединения БД");
-            this.error = true;
-        }
+    public void saveHeroDB() {
+        int weapon = 0;
+        int armor = 0;
+        int helm = 0;
+        if (currentHero.getWeapon() != null)
+            weapon = currentHero.getWeapon().getAttack();
+        if (currentHero.getArmor() != null)
+            armor = currentHero.getArmor().getDefence();
+        if (currentHero.getHelmet() != null)
+            helm = currentHero.getHelmet().getHitPoints();
+        executeQuery("INSERT INTO hero (name, class, attack, defence, hitPoints, level, experience," +
+                "coordinateX, coordinateY, photoProfile, leftSide, rightSide, back, weapon, armor, helmet) VALUES (" +
+                "'" + currentHero.getName() + "','" + currentHero.getHeroClass() + "', " + currentHero.getAttack() +
+                "," + currentHero.getDefence() + " , " + currentHero.getHitPoints() + ", " + currentHero.getLevel() +
+                "," + currentHero.getExperience() + ", " + currentHero.getX() + ", " + currentHero.getY() +
+                "," + "'" + currentHero.getPhotoProfile() +
+                "','" + currentHero.getLeftSide() + "', '" + currentHero.getRightSide() + "'," +
+                "'" + currentHero.getBack() + "', " + weapon + ", " + armor + ", " + helm + ");");
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         return connection;
     }
 
-    public boolean isConnectionError(){
+    public boolean isConnectionError() {
         return error;
     }
 }

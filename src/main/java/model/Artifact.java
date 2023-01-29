@@ -4,9 +4,6 @@ package model;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * @author RMNurgalieva
- */
 public class Artifact {
 
     @NotNull

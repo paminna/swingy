@@ -2,9 +2,6 @@ package model;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * @author RMNurgalieva
- */
 public class Hero {
 
     @NotNull
@@ -50,7 +47,7 @@ public class Hero {
     }
 
     public Hero(String name, String heroClass, int attack, int defence, int hitPoints, String photoProfile,
-                String leftSide, String rightSide, String back, int x, int y) {
+                String leftSide, String rightSide, String back, int x, int y, int experience, int level) {
         this.name = name;
         this.heroClass = heroClass;
         this.attack = attack;
@@ -62,8 +59,9 @@ public class Hero {
         this.back = back;
         this.x = x;
         this.y = y;
-        this.level = 0;
         this.currentPhoto = photoProfile;
+        this.experience = experience;
+        this.level = level;
     }
 
     public String getName() {

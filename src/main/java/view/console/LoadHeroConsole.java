@@ -11,10 +11,6 @@ import java.util.Scanner;
 
 import static controller.PlayController.currentHero;
 
-
-/**
- * @author RMNurgalieva
- */
 public class LoadHeroConsole {
 
     public DBService dbservice = new DBService();
@@ -64,22 +60,10 @@ public class LoadHeroConsole {
     }
 
     public void loadHeroDB(int id) {
-        try {
-            ResultSet hero = dbservice.executeQuery("SELECT * from hero where id=" + id);
-            while (hero.next()) {
-                PlayController.createHero(hero.getString("name"), hero.getString("class"), Integer.parseInt(hero.getString("attack"))
-                        , Integer.parseInt(hero.getString("defence")), Integer.parseInt(hero.getString("hitPoints")), hero.getString("photoProfile"),
-                        hero.getString("leftSide"), hero.getString("rightSide"), hero.getString("back"),
-                        Integer.parseInt(hero.getString("coordinatex")), Integer.parseInt(hero.getString("coordinatey")));
-                loadArtifacts(Integer.parseInt(hero.getString("weapon")),
-                        Integer.parseInt(hero.getString("armor")), Integer.parseInt(hero.getString("helmet")));
-            }
-        } catch (SQLException e) {
-            System.out.println("Error loadHeroBD gameController");
-        }
+        dbservice.findHeroById(id);
     }
 
-    public void loadArtifacts(int weapon, int armor, int helmet) {
+    public static void loadArtifacts(int weapon, int armor, int helmet) {
         if (weapon != 0) {
             currentHero.setWeapon(PlayService.getWeapon());
         } else if (armor != 0) {
@@ -89,36 +73,16 @@ public class LoadHeroConsole {
         }
     }
 
-    public void saveHeroDB() {
-        int weapon = 0;
-        int armor = 0;
-        int helm = 0;
-        if (currentHero.getWeapon() != null)
-            weapon = currentHero.getWeapon().getAttack();
-        if (currentHero.getArmor() != null)
-            armor = currentHero.getArmor().getDefence();
-        if (currentHero.getHelmet() != null)
-            helm = currentHero.getHelmet().getHitPoints();
-        dbservice.executeQuery("INSERT INTO hero (name, class, attack, defence, hitpoints, level, experience," +
-                "coordinatex, coordinatey, photoprofile, face, leftside, rightside, back, weapon, armor, helmet) VALUES (" +
-                "'" + currentHero.getName() + "','" + currentHero.getHeroClass() + "', " + currentHero.getAttack() +
-                "," + currentHero.getDefence() + " , " + currentHero.getHitPoints() + ", " + currentHero.getLevel() +
-                "," + currentHero.getExperience() + ", " + currentHero.getX() + ", " + currentHero.getY() +
-                "," + "'" + currentHero.getPhotoProfile() +
-                "','" + currentHero.getLeftSide() + "', '" + currentHero.getRightSide() + "'," +
-                "'" + currentHero.getBack() + "', " + weapon + ", " + armor + ", " + helm + ");");
-    }
-
     public void saveHeroFile() {
         String fileName = "hero";
         int count = 0;
         while (true) {
             count++;
-            File file = new File("./src/main/resources/saves/" + fileName + count);
+            File file = new File("./src/main/resources/" + fileName + count);
             if (!file.exists())
                 break;
         }
-        try (FileWriter writer = new FileWriter("./src/main/resources/saves/" + fileName + count, false)) {
+        try (FileWriter writer = new FileWriter("./src/main/resources/" + fileName + count, false)) {
             writer.write(currentHero.getName() + "\n");
             writer.write(currentHero.getHeroClass() + "\n");
             writer.write(currentHero.getAttack() + "\n");

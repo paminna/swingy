@@ -1,10 +1,13 @@
 package view.GUI;
 
-import controller.PlayController;
-import model.Hero;
 import view.CreateHero;
+import view.DBService;
+
 import javax.swing.*;
 import java.awt.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import static view.CreateHero.current_hero;
 
 public class CreateHeroGUI {
@@ -88,6 +91,50 @@ public class CreateHeroGUI {
         frame.addEmptyText(16, 0);
 
         c.gridy = 17;
+        frame.getWindow().add(button_panel, c);
+
+        frame.getWindow().setVisible(true);
+    }
+
+    public void loadHero(){
+        WindowService frame = new WindowService();
+        frame.createBackGround("./src/main/resources/hero_create.jpg");
+
+        JPanel button_panel = new JPanel();
+        button_panel.setOpaque(false); // убираем белый цвет на jpanel кнопок
+        button_panel.setLayout(new FlowLayout());
+
+        JButton back = frame.createBotton("Back", 0, 0);
+
+        back.setActionCommand("Back");
+
+        back.addActionListener(new ButtonClickListener());
+
+        button_panel.add(back);
+
+        GridBagConstraints c = new GridBagConstraints();
+
+        DBService dbService = new DBService();
+        int max_count = 0;
+        ResultSet resultSet = dbService.executeQuery("SELECT * FROM hero");
+        try {
+            while (resultSet.next())
+                max_count++;
+            c.gridx = 0;
+            c.gridy = 0;
+            for (int i = 1; i <= max_count; i++){
+                JButton loadHero = frame.createBotton("Hero" + i, 0, 0);
+                loadHero.setActionCommand(String.valueOf(i));
+                loadHero.addActionListener(new ButtonClickListener());
+                frame.getWindow().add(loadHero, c);
+                c.gridy++;
+            }
+            WindowService.heroIsDB = 1;
+        } catch (SQLException e) {
+            System.out.println("SQL error in LoadHeroPage_BD");
+        }
+        c.fill = GridBagConstraints.VERTICAL;
+        c.gridy = 10;
         frame.getWindow().add(button_panel, c);
 
         frame.getWindow().setVisible(true);
