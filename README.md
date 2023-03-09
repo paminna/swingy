@@ -1,4 +1,8 @@
 # swingy
+<img width="892" alt="Снимок экрана 2023-03-09 в 23 07 57" src="https://user-images.githubusercontent.com/73643598/224143333-412faf0f-5fb6-448f-b1c5-9dcc324f5436.png">
+
+<img width="892" alt="Снимок экрана 2023-03-09 в 23 07 18" src="https://user-images.githubusercontent.com/73643598/224143380-a25bc3da-b89f-47f3-b2aa-db6648342856.png">
+
 
 ________________________________________________________________
 #### <p align=center> "Введение в разработку графического интерфейса"</p> ####
